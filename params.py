@@ -4,9 +4,9 @@ from qlearn import QLearningAgent
 from maze import Maze, maze_piece_cake, maze_fire, maze_medium
 
 
-goal_reward = 100
-wall_penalty = -10
-step_penalty = 10
+goal_reward = 10
+wall_penalty = -50
+step_penalty = 1
 
 # maze_piece_cake.goal_position = (9,9)
 # maze_medium.goal_position = (20,20)
