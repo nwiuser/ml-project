@@ -1,8 +1,7 @@
 import numpy as np
 from maze import Maze, maze_piece_cake, maze_fire, maze_medium
+
 actions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-
-
 class QLearningAgent:
   def __init__(self, maze, learning_rate=0.1, discount_factor=0.9, exploration_start=1.0, exploration_end=0.01, num_episodes=100):
     self.q_table = np.zeros((maze.height, maze.width, len(actions)))
@@ -25,20 +24,18 @@ class QLearningAgent:
 
   def update_q_table(self, state, action, reward, next_state):
     try:
-        # Validate next state
         if next_state[0] >= self.q_table.shape[0] or next_state[1] >= self.q_table.shape[1]:
             print(f"Invalid next state: {next_state}. Skipping update.")
             return
         
-        # Find the best action for the next state
         best_next_action = np.argmax(self.q_table[next_state[0], next_state[1]])
-        # Récupérer la valeur Q actuelle
+        
         current_q_value = self.q_table[state[0], state[1], action]
-        # Calculer la nouvelle valeur Q
+     
         new_value = current_q_value + self.learning_rate * (
             reward + self.discount_factor * self.q_table[next_state[0], next_state[1], best_next_action] - current_q_value
         )
-        # Mettre à jour la table Q
+  
         self.q_table[state[0], state[1], action] = new_value
     except IndexError as e:
         print(f"IndexError in update_q_table: {e}")

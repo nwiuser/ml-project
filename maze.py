@@ -4,12 +4,12 @@ import time
 import random
 
 class Maze:
-  def __init__(self, maze, start_position, goal_position): # Initialize maze object with the provided maze, start_position, goal_position
+  def __init__(self, maze, start_position, goal_position): 
     self.maze = maze
-    self.height = maze.shape[0] # get the height of the maze
-    self.width = maze.shape[1] # get the width of the maze
-    self.start_position = start_position # set the start position in the maze as a tuple
-    self.goal_position = goal_position # set the goal position in the maze as a tuple
+    self.height = maze.shape[0] 
+    self.width = maze.shape[1] 
+    self.start_position = start_position
+    self.goal_position = goal_position 
 
   def show_maze(self):
 
@@ -26,20 +26,15 @@ class Maze:
       size = (5, 5)
       fontsize = 15
 
-    # visualize the maze using matplotlib
     plt.figure(figsize=size)
 
-    #display the maze as an image in grayscale ('gray' colormap)
     plt.imshow(self.maze, cmap='gray', interpolation='none')
 
-    #add start and goal position as 'S' and 'G'
     plt.text(self.start_position[0], self.start_position[1], 'S', ha='center', va='center', color='red', fontsize=fontsize)
     plt.text(self.goal_position[0], self.goal_position[1], 'G', ha='center', va='center', color='green', fontsize=fontsize)
 
-    #remove ticks and labels from the axes
     plt.xticks([]), plt.yticks([])
 
-    # show the plot
     plt.show()
 
 
@@ -118,7 +113,4 @@ maze_fire = np.array([
 [0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
 [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0],
 ])
-
-
-
 
